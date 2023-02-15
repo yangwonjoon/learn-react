@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid black;
+      }
+      .col1 {
+        width: 80px;
+      }
+      .col2 {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <colgroup span="3"></colgroup>
+      <caption>
+        예제 점수 테이블
+      </caption>
+      <tr>
+        <th>이름</th>
+        <th>국어</th>
+        <th>수학</th>
+        <th>코딩</th>
+      </tr>
+      <tr>
+        <th>양원준</th>
+        <td>80</td>
+        <td>100</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <th>이지원</th>
+        <td>100</td>
+        <td>80</td>
+        <td>100</td>
+      </tr>
+    </table>
+    <br /><br />
+    <table>
+      <caption>
+        학급 점수
+      </caption>
+      <colgroup>
+        <col class="col1" />
+        <col class="col2" />
+        <col class="col3" />
+        <col class="col4" />
+        <col class="col5" />
+        <col class="col6" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>반</th>
+          <th>이름</th>
+          <th>국어</th>
+          <th>영어</th>
+          <th>수학</th>
+          <th>코딩</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">1반</td>
+          <td>홍길동</td>
+          <td>90</td>
+          <td>100</td>
+          <td>90</td>
+          <td>81</td>
+        </tr>
+        <tr>
+          <td>양원준</td>
+          <td>85</td>
+          <td>81</td>
+          <td>95</td>
+          <td>100</td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="2">평균</td>
+          <td>123</td>
+          <td>32</td>
+          <td>42</td>
+          <td>12</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
