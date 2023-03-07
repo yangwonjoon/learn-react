@@ -36,47 +36,43 @@ function App() {
         가나다순 정렬
       </button>
 
-      <div className='list'>
-        <h4
-          onClick={() => {
-            setmodal(!modal);
-          }}
-        >
-          {head[2]}
-        </h4>
-        <p>2월 17일 발행</p>
-      </div>
-
       {head.map(function (a, i) {
         return (
           <div className='list' key={i}>
-            <h4>
+            <h4
+              onClick={() => {
+                setmodal(!modal);
+              }}
+            >
               {head[i]}
               <span
                 onClick={() => {
-                  count(num + 1);
+                  let copy = [...num];
+                  copy[i] = copy[i] + 1;
+                  count(copy);
                 }}
               >
                 👍
               </span>
-              {num}
+              {num[i]}
             </h4>
             <p>2월 17일 발행</p>
           </div>
         );
       })}
 
-      {modal == true ? <Modal /> : null}
+      {modal == true ? <Modal head={head} /> : null}
     </div>
   );
 }
 
-function Modal() {
+function Modal(props) {
   return (
     <div className='modal'>
-      <h4>제목</h4>
+      <h4>{props.head[0]}</h4>
       <p>날짜</p>
       <p>상세 내용</p>
+      <button onClick={() => {}}>수정</button>
     </div>
   );
 }
