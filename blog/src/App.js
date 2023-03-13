@@ -3,14 +3,10 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  let [head, b] = useState([
-    "라자 코트 추천",
-    "다자 코트 추천",
-    "가아 코트 추천",
-  ]);
-
+  let [head, sethead] = useState(["여자 코트 추천", "남자 코트 추천", "유아 코트 추천",]);
   let [num, count] = useState([0, 0, 0]);
   let [modal, setmodal] = useState(false);
+  let [modalTitle,setmodalTitle] = useState(0)
 
   return (
     <div className='App'>
@@ -19,19 +15,15 @@ function App() {
       </div>
       <button
         onClick={() => {
-          let copy = [...head];
+          let copy = [...head];          
           copy[0] = "남자 코트 추천";
-          b(copy);
+          sethead(copy);
         }}
       >
         글자 변경
       </button>
       <button
-        onClick={() => {
-          let copy = [...head];
-          copy.sort();
-          b(copy);
-        }}
+        onClick={() => { let copy = [...head]; copy.sort(); sethead(copy);}}
       >
         가나다순 정렬
       </button>
@@ -39,19 +31,14 @@ function App() {
       {head.map(function (a, i) {
         return (
           <div className='list' key={i}>
-            <h4
-              onClick={() => {
-                setmodal(!modal);
-              }}
-            >
+            <h4 onClick={() => { setmodal(!modal); setmodalTitle(i); }}>
               {head[i]}
               <span
                 onClick={() => {
                   let copy = [...num];
                   copy[i] = copy[i] + 1;
                   count(copy);
-                }}
-              >
+                }}>
                 👍
               </span>
               {num[i]}
@@ -61,7 +48,10 @@ function App() {
         );
       })}
 
-      {modal == true ? <Modal head={head} /> : null}
+      <input></input>
+      <button>추가</button>
+
+      {modal == true ? <Modal modalTitle={modalTitle} sethead={sethead} head={head} /> : null}
     </div>
   );
 }
@@ -69,10 +59,14 @@ function App() {
 function Modal(props) {
   return (
     <div className='modal'>
-      <h4>{props.head[0]}</h4>
+      <h4>{props.head[props.modalTitle]}</h4>
       <p>날짜</p>
       <p>상세 내용</p>
-      <button onClick={() => {}}>수정</button>
+      <button
+        onClick={() => { }}
+      >
+        수정
+      </button>
     </div>
   );
 }
