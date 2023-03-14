@@ -4,9 +4,10 @@ import { useState } from "react";
 
 function App() {
   let [head, sethead] = useState(["여자 코트 추천", "남자 코트 추천", "유아 코트 추천",]);
-  let [num, count] = useState([0, 0, 0]);
+  let [num, setnum] = useState([0, 0, 0]);
   let [modal, setmodal] = useState(false);
-  let [modalTitle,setmodalTitle] = useState(0)
+  let [modalTitle,setmodalTitle] = useState(0);
+  let [input, setinput] = useState('');
 
   return (
     <div className='App'>
@@ -34,22 +35,25 @@ function App() {
             <h4 onClick={() => { setmodal(!modal); setmodalTitle(i); }}>
               {head[i]}
               <span
-                onClick={() => {
+                onClick={(e) => {
                   let copy = [...num];
                   copy[i] = copy[i] + 1;
-                  count(copy);
+                  setnum(copy);
+                  e.stopPropagation();
                 }}>
                 👍
               </span>
               {num[i]}
             </h4>
             <p>2월 17일 발행</p>
+            <button onClick={()=>{}}>삭제</button>
           </div>
         );
       })}
 
-      <input></input>
-      <button>추가</button>
+      <input value={input} onChange={(e) => { setinput(e.target.value);}}></input>
+      <button onClick={(e) => {sethead(head => [...head, input]); setinput(""); setnum(num => [...num, 0])}}>추가</button>
+      
 
       {modal == true ? <Modal modalTitle={modalTitle} sethead={sethead} head={head} /> : null}
     </div>
@@ -62,11 +66,7 @@ function Modal(props) {
       <h4>{props.head[props.modalTitle]}</h4>
       <p>날짜</p>
       <p>상세 내용</p>
-      <button
-        onClick={() => { }}
-      >
-        수정
-      </button>
+      <button onClick={() => { }}>수정</button>
     </div>
   );
 }
