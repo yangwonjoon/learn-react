@@ -46,7 +46,11 @@ function App() {
               {num[i]}
             </h4>
             <p>2월 17일 발행</p>
-            <button onClick={()=>{}}>삭제</button>
+            <button onClick={()=>{
+              let copy = [...head];
+              copy.splice(i,1);
+              sethead(copy);
+            }}>삭제</button>
           </div>
         );
       })}
