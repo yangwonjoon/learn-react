@@ -9,6 +9,16 @@ function App() {
   let [modalTitle,setmodalTitle] = useState(0);
   let [input, setinput] = useState('');
 
+  const inputnull = (e) =>{
+    if(input == "")
+      setinput("")
+    else{
+      sethead(head => [...head, input])
+      setinput("")
+      setnum(num => [...num, 0])
+    }
+  }
+
   return (
     <div className='App'>
       <div className='black-nav'>
@@ -46,17 +56,14 @@ function App() {
               {num[i]}
             </h4>
             <p>2월 17일 발행</p>
-            <button onClick={()=>{
-              let copy = [...head];
-              copy.splice(i,1);
-              sethead(copy);
+            <button onClick={()=>{ let copy = [...head]; let copynum=[...num]; copynum.splice(i,1); copynum.splice(i,1); setnum(copynum);copy.splice(i,1); sethead(copy);
             }}>삭제</button>
           </div>
         );
       })}
 
       <input value={input} onChange={(e) => { setinput(e.target.value);}}></input>
-      <button onClick={(e) => {sethead(head => [...head, input]); setinput(""); setnum(num => [...num, 0])}}>추가</button>
+      <button onClick={inputnull}>추가</button>
       
 
       {modal == true ? <Modal modalTitle={modalTitle} sethead={sethead} head={head} /> : null}
