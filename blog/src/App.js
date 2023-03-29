@@ -55,7 +55,7 @@ function App() {
               </span>
               {num[i]}
             </h4>
-            <p>2월 17일 발행</p>
+            <p>여기 현재 날짜 들어가야함</p>
             <button onClick={()=>{ let copy = [...head]; let copynum=[...num]; copynum.splice(i,1); copynum.splice(i,1); setnum(copynum);copy.splice(i,1); sethead(copy);
             }}>삭제</button>
           </div>
